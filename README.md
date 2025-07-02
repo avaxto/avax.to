@@ -10,6 +10,7 @@ Home of the [$AVXTO Avalanche P2P network value token](https://dexscreener.com/a
 * [nlohmann_json](https://github.com/nlohmann/json)
 * [openssl](https://github.com/openssl/openssl)
 * [Qt 6](https://www.qt.io/download-open-source)
+* [SQLite3](https://sqlite.org/)
 
 # Build Instructions
 

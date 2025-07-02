@@ -14,6 +14,12 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(MACOSX TRUE)
 endif()
 
+
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/module)
+include(ProcessConfigurations)
+include(CMakeDependentOption)
+
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -23,6 +29,9 @@ GIT_TAG  v3.11.3
 GIT_SHALLOW TRUE)
 
 FetchContent_MakeAvailable(nlohmann_json)
+
+find_package(SQLite3)
+
 
 include_directories(include)
 include_directories(/usr/local/include)
