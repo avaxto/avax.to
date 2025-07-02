@@ -28,8 +28,6 @@ if [ -n "$QT_LIB_DIR" ]; then
         exit 1
     fi
 
-    
-
     cmake -DCMAKE_PREFIX_PATH:PATH=$QT_CMAKE_PREFIX -B $BUILD_DIR -S .
     cmake --build $BUILD_DIR # -v    
 else
