@@ -18,48 +18,8 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>-1</number>
       </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Tab 1</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QTextBrowser" name="textBrowser">
-            <property name="html">
-             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Welcome to &lt;span style=&quot; font-weight:700;&quot;&gt;AVAX Toolbox&lt;/span&gt; v0.01 Alpha&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Links:&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://dexscreener.com/avalanche/0x2bdebde7e1088e42aafef104b5f7457aca5ab86f&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;- $AVXTO Dexscreener&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://x.com/avaxto&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;- Official @avaxto on X&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- &lt;a href=&quot;https://github.com/avaxto/avax.to&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Github&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://telegram.me/collablandbot?start=VFBDI1RFTCNDT01NIy0xMDAxNzI5NTYxMjQw&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;- OG and Dev Telegram Channel&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://telegram.me/collablandbot?start=VFBDI1RFTCNDT01NIy0xMDAyNTA0MDM2MTA5&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;- AVXTO Whale Telegram Channel&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://x.com/rektbuildr&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;- Follow REKTBuilder on X&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/resources/images/Gu3dgzJWMAEzXWi.png&quot; /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -77,8 +37,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="title">
      <string>Wallet</string>
     </property>
+    <addaction name="actionOpen_Wallet_Manager"/>
     <addaction name="actionNew_Wallet"/>
     <addaction name="actionOpen_Existing"/>
+    <addaction name="actionClose_Wallet"/>
    </widget>
    <widget class="QMenu" name="menuP2P_Chat">
     <property name="title">
@@ -86,6 +48,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
     <addaction name="actionConnect_Peer"/>
     <addaction name="actionNetwork_STats"/>
+    <addaction name="actionAVXTO_Chat"/>
+    <addaction name="actionAVXTO_Whale_Chat"/>
    </widget>
    <widget class="QMenu" name="menuMarketplace">
     <property name="title">
@@ -100,9 +64,28 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="title">
      <string>Avalanche</string>
     </property>
+    <widget class="QMenu" name="menuValidators">
+     <property name="title">
+      <string>Validators</string>
+     </property>
+     <addaction name="actionConnected"/>
+     <addaction name="actionWorld_Map"/>
+     <addaction name="actionLaunch_Validator"/>
+     <addaction name="actionCheck_Uptime"/>
+    </widget>
+    <widget class="QMenu" name="menuL1_Manager">
+     <property name="title">
+      <string>L1 Manager</string>
+     </property>
+     <addaction name="actionL1_Dashboard"/>
+     <addaction name="actionLaunch_L1"/>
+     <addaction name="actionCross_L1_Transfer"/>
+    </widget>
     <addaction name="actionNetwork_Stats"/>
     <addaction name="actionMessages_Log"/>
     <addaction name="actionConnected_Peers"/>
+    <addaction name="menuValidators"/>
+    <addaction name="menuL1_Manager"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -115,7 +98,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionNew_Session"/>
     <addaction name="actionSave_Session"/>
+    <addaction name="actionClose_Session"/>
+    <addaction name="actionConfiguration"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuFile"/>
@@ -199,6 +185,91 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <action name="actionAbout_Qt">
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionConnected">
+   <property name="text">
+    <string>Connected</string>
+   </property>
+  </action>
+  <action name="actionWorld_Map">
+   <property name="text">
+    <string>World Map</string>
+   </property>
+  </action>
+  <action name="actionLaunch_Validator">
+   <property name="text">
+    <string>Launch Validator</string>
+   </property>
+  </action>
+  <action name="actionCheck_Uptime">
+   <property name="text">
+    <string>Check Uptime</string>
+   </property>
+  </action>
+  <action name="actionPortfolio">
+   <property name="text">
+    <string>Portfolio</string>
+   </property>
+  </action>
+  <action name="actionMy_Transactions">
+   <property name="text">
+    <string>My Transactions</string>
+   </property>
+  </action>
+  <action name="actionL1_Dashboard">
+   <property name="text">
+    <string>L1 Dashboard</string>
+   </property>
+  </action>
+  <action name="actionLaunch_L1">
+   <property name="text">
+    <string>Launch L1</string>
+   </property>
+  </action>
+  <action name="actionCross_Chain_Transfer">
+   <property name="text">
+    <string>Cross Chain Transfer</string>
+   </property>
+  </action>
+  <action name="actionCross_L1_Transfer">
+   <property name="text">
+    <string>Cross L1 Transfer</string>
+   </property>
+  </action>
+  <action name="actionAVXTO_Chat">
+   <property name="text">
+    <string>AVXTO Chat</string>
+   </property>
+  </action>
+  <action name="actionAVXTO_Whale_Chat">
+   <property name="text">
+    <string>AVXTO Whale Chat</string>
+   </property>
+  </action>
+  <action name="actionConfiguration">
+   <property name="text">
+    <string>Configuration</string>
+   </property>
+  </action>
+  <action name="actionNew_Session">
+   <property name="text">
+    <string>New Session</string>
+   </property>
+  </action>
+  <action name="actionClose_Session">
+   <property name="text">
+    <string>Close Session</string>
+   </property>
+  </action>
+  <action name="actionOpen_Wallet_Manager">
+   <property name="text">
+    <string>Open Wallet Manager</string>
+   </property>
+  </action>
+  <action name="actionClose_Wallet">
+   <property name="text">
+    <string>Close Wallet</string>
    </property>
   </action>
  </widget>

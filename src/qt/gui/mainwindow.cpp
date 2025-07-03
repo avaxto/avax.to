@@ -20,7 +20,10 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-
+#include "./walletwindow.h"
+#include <QTabWidget>
+#include <QMainWindow>
+#include <QWidget>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -32,3 +35,21 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_actionNew_Wallet_triggered()
+{
+    WalletWindow *mainWindow = new WalletWindow();
+    QWidget* newTab = new QWidget();
+
+    mainWindow->setWindowFlags(Qt::Widget); // Remove window decorations
+    mainWindow->setCentralWidget(new QWidget()); // Set an empty central widget
+
+    QVBoxLayout* layout = new QVBoxLayout(newTab);
+    layout->addWidget(mainWindow);
+
+    int tabIndex = ui->tabWidget->addTab(newTab, "Wallet");
+
+    ui->tabWidget->setCurrentIndex(tabIndex);
+
+}
+

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WalletWindow</class>
+ <widget class="QMainWindow" name="WalletWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPortfolio">
+    <property name="title">
+     <string>Wallet Ops</string>
+    </property>
+    <addaction name="actionPortfolio"/>
+    <addaction name="actionCross_Chain_Transfer"/>
+    <addaction name="actionMy_Transactions"/>
+   </widget>
+   <widget class="QMenu" name="menuTransactions">
+    <property name="title">
+     <string>Transactions</string>
+    </property>
+    <addaction name="actionSign_Message"/>
+    <addaction name="actionVerify_Signature"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionBackup_Wallet"/>
+    <addaction name="actionClose_Wallet"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuPortfolio"/>
+   <addaction name="menuTransactions"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionPortfolio">
+   <property name="text">
+    <string>Portfolio</string>
+   </property>
+  </action>
+  <action name="actionCross_Chain_Transfer">
+   <property name="text">
+    <string>Cross Chain Transfer</string>
+   </property>
+  </action>
+  <action name="actionMy_Transactions">
+   <property name="text">
+    <string>My Transactions</string>
+   </property>
+  </action>
+  <action name="actionSign_Message">
+   <property name="text">
+    <string>Sign Message</string>
+   </property>
+  </action>
+  <action name="actionVerify_Signature">
+   <property name="text">
+    <string>Verify Signature</string>
+   </property>
+  </action>
+  <action name="actionBackup_Wallet">
+   <property name="text">
+    <string>Backup Wallet</string>
+   </property>
+  </action>
+  <action name="actionClose_Wallet">
+   <property name="text">
+    <string>Close Wallet</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
