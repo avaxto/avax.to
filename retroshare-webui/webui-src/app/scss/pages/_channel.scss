@@ -1,0 +1,94 @@
+@use '../abstracts' as *;
+
+.file-section {
+  margin-top: 2rem;
+  @include flex(column);
+}
+
+.comments-section {
+  margin-top: 2rem;
+  @include flex($justify: space-between);
+  &__menu {
+    @include flex($gap: 1rem);
+    &-id {
+      @include flex($gap: 0.25rem, $align: center);
+    }
+  }
+}
+
+#toggleunsub {
+  position: relative;
+  background: gray;
+}
+
+/* subject */
+table.channels {
+  & th:nth-child(1) {
+    width: 50%;
+    text-align: start;
+  }
+  /* subject */
+  & td:nth-child(1) {
+    text-align: start;
+    /* Truncate text with '...' */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  & tr:hover {
+    background-color: $light-color;
+    cursor: pointer;
+  }
+  & tr.hidden {
+    display: none;
+  }
+}
+
+/* subject */
+table {
+  padding: 0.5rem;
+  &.comments {
+    border: 1px solid #eee;
+    & th {
+      height: 40px;
+      &:nth-child(1) {
+        width: 2%;
+      }
+      &:nth-child(2) {
+        width: 40%;
+      }
+    }
+    & td {
+      word-wrap: break-word;
+      &:nth-child(2) {
+        text-align: start;
+      }
+    }
+  }
+  &.files {
+    & th:first-child {
+      text-align: start;
+      width: 60%;
+    }
+    & tr td:first-child {
+      text-align: start;
+    }
+    & td {
+      word-wrap: break-word;
+    }
+  }
+}
+/* #options{
+  width: 100px;
+  text-align: center;
+  font-size: medium;
+  margin-left: 20px;
+  height: 40px;
+} */
+#mtags {
+  width: 160px;
+  text-align: center;
+  font-size: medium;
+  margin-left: 10px;
+  height: 40px;
+}

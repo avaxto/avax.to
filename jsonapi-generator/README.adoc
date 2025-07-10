@@ -1,0 +1,10 @@
+// SPDX-FileCopyrightText: (C) 2021 Retroshare Team <contact@retroshare.cc>
+// SPDX-License-Identifier: CC0-1.0
+
+= Moved
+
+JSON API generator is now part of `libretroshare` look under `src/jsonapi/`
+directory in `libretroshare` repository.
+
+This directory and all it's content is kept as is only for retro-compatibility
+with the old, deprecated `qmake` build system.

@@ -1,0 +1,366 @@
+@use '../abstracts/' as *;
+
+.side-bar {
+  @include flex(column);
+  background: white;
+  .mail-compose-btn {
+    width: 96%;
+    margin: 0.25rem;
+    padding: 0.75rem 0;
+  }
+}
+
+.compose-mail {
+  &__from {
+    @include flex($justify: space-between);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $light-color;
+  }
+  &__recipients {
+    padding: 0.5rem 0;
+    @include flex(column, $gap: 0.5rem);
+    border-bottom: 2px solid $light-color;
+    &__container {
+      @include flex($gap: 0.5rem);
+      & > label {
+        text-transform: capitalize;
+      }
+      .recipients {
+        width: 100%;
+        @include flex($gap: 0.5rem);
+        flex-wrap: wrap;
+        &__selected {
+          padding: 0.125rem 0.5rem;
+          @include flex($align: center, $gap: 0.5rem);
+          border: 1px solid $light-color;
+          border-radius: 3px;
+          cursor: default;
+          & i {
+            cursor: pointer;
+            padding: 0.25rem;
+          }
+        }
+        &__input {
+          display: flex;
+          position: relative;
+          flex-grow: 1;
+          &-field {
+            flex-grow: 1;
+            min-width: 200px;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            &:focus + .recipients__input-list {
+              display: flex;
+            }
+          }
+          &-list {
+            z-index: 1;
+            position: absolute;
+            top: 1rem;
+            padding: 0;
+            width: 100%;
+            max-height: 15rem;
+            flex-direction: column;
+            overflow: auto;
+            display: none;
+            background: white;
+            border-top: 1px solid $light-color;
+            border-bottom: 1px solid $light-color;
+            &:hover {
+              display: flex;
+            }
+            & li {
+              list-style: none;
+              padding: 0.25rem 0.5rem;
+              cursor: pointer;
+              background: white;
+              border: 1px solid $light-color;
+              border-top: 0px;
+              &:hover {
+                background: $light-color;
+              }
+              &:last-child {
+                border-bottom: 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .remove-recipient {
+      padding: 0.125rem 0.5rem;
+    }
+  }
+  input[type='text'].compose-mail__subject {
+    padding: 0.5rem 0;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid $light-color;
+    border-radius: 0;
+  }
+  &__message {
+    margin: 0.5rem 0;
+    height: 100%;
+    @include flex(column);
+    overflow: auto;
+    &-body {
+      height: 100%;
+      outline: transparent;
+    }
+  }
+  &__send-btn {
+    @include flex($align: center, $gap: 0.5rem);
+    & i {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.msg-view {
+  height: 100%;
+  @include flex(column, $gap: 1rem);
+  overflow: auto;
+  &-nav {
+    @include flex($justify: space-between, $align: column);
+    &__action {
+      @include flex($gap: 0.5rem);
+    }
+  }
+  &__header {
+    @include flex(column, $gap: 1rem);
+    & > h3 {
+      line-height: 1;
+    }
+    & .msg-details {
+      @include flex($gap: 1rem);
+      &__avatar {
+        height: max-content;
+      }
+      &__info {
+        @include flex(column);
+        &-item {
+          @include flex($gap: 0.5rem);
+        }
+      }
+    }
+  }
+  &__body {
+    height: 100%;
+    overflow: auto;
+    font-size: 14px !important;
+  }
+  &__attachment {
+    height: 50%;
+    overflow: auto;
+    @include flex(column);
+    &-items {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+}
+
+.mail-tag {
+  width: 8rem;
+  padding: 0.5rem;
+}
+.msgHeader {
+  display: flex;
+}
+.msgHeaderDetails {
+  @include flex(column);
+}
+
+table.mails {
+  & th {
+    /* star */
+    &:nth-child(1) {
+      width: 5%;
+      color: $golden-yellow-color;
+    }
+    /* attachments */
+    &:nth-child(2) {
+      width: 5%;
+      color: darken($light-color, 50%);
+    }
+    /* subject */
+    &:nth-child(3) {
+      width: 50%;
+      text-align: start;
+    }
+    /* From */
+    &:nth-child(4),
+    /* date */
+    &:nth-child(5) {
+      width: 20%;
+      text-align: start;
+    }
+  }
+
+  & td {
+    /* subject */
+    &:nth-child(3) {
+      text-align: start;
+      /* Truncate text with '...' */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* From */
+    &:nth-child(4),
+    /* date */
+    &:nth-child(5) {
+      text-align: start;
+    }
+  }
+
+  & tr {
+    &:hover {
+      background-color: $light-color;
+      cursor: pointer;
+    }
+    &.unread {
+      color: black;
+      background-color: $light-color;
+    }
+  }
+
+  //Remove hover effects from the table head
+  & > tr:hover {
+    cursor: auto;
+    background-color: white;
+  }
+}
+
+/* hide checkbox */
+input.star-check {
+  display: none;
+  /* use label with 'for' to manipulate checkbox */
+  & + label.star-check {
+    color: grey;
+  }
+  &:checked + label.star-check {
+    color: $golden-yellow-color;
+  }
+}
+
+/* mail_util.js styles */
+#truncate {
+  height: 6rem;
+  overflow: auto;
+  &.truncated-view {
+    height: 1.75rem;
+    overflow: hidden;
+  }
+}
+.toggle-truncate {
+  font-size: 0.75rem;
+  padding: 0 0.25rem;
+  background: #999;
+  color: $dark-color;
+  box-shadow: none;
+  border-radius: 2px;
+}
+
+// Normal mail attachment view
+table.attachment-container {
+  padding: 0;
+
+  & > tr {
+    border: 0;
+  }
+
+  .attachment-header {
+    width: 100%;
+    @include flex($justify: space-between);
+
+    th {
+      text-align: start;
+
+      &:nth-child(1) {
+        flex-basis: 45%;
+      }
+      &:nth-child(2) {
+        flex-basis: 15%;
+      }
+      &:nth-child(3) {
+        flex-basis: 10%;
+      }
+      &:nth-child(4) {
+        flex-basis: 20%;
+      }
+      &:nth-child(5) {
+        text-align: center;
+        flex-basis: 10%;
+      }
+    }
+  }
+
+  .attachment {
+    width: 100%;
+    @include flex($justify: space-between);
+    text-align: start;
+
+    &__name {
+      flex-basis: 45%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      span {
+        margin-left: 8px;
+      }
+    }
+
+    &__from {
+      flex-basis: 15%;
+    }
+    &__size {
+      flex-basis: 10%;
+    }
+    &__date {
+      flex-basis: 20%;
+    }
+    & td:nth-child(5) {
+      @include flex($justify: center, $align: center);
+      flex-basis: 10%;
+
+      & button {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+// Attachment Section attachment view
+.view-toggle {
+  height: max-content;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  display: flex;
+
+  & * {
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+}
+
+.composePopupOverlay {
+  @include popupOverlay;
+  .composePopup {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 80%;
+    height: 90%;
+    & > .widget {
+      padding: 2rem;
+    }
+    & .close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+}

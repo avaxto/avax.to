@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExpressionWidget</class>
+ <widget class="QWidget" name="ExpressionWidget">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Expression Widget</string>
+  </property>
+  <layout class="QHBoxLayout">
+   <item>
+    <widget class="ExprOpElement" name="exprOpElem"/>
+   </item>
+   <item>
+    <widget class="ExprTermsElement" name="exprTermElem"/>
+   </item>
+   <item>
+    <widget class="ExprConditionElement" name="exprCondElem"/>
+   </item>
+   <item>
+    <widget class="ExprParamElement" name="exprParamElem">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="deleteExprButton">
+     <property name="toolTip">
+      <string>Delete this expression</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../images.qrc">
+       <normaloff>:/images/delete.png</normaloff>:/images/delete.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ExprOpElement</class>
+   <extends>QFrame</extends>
+   <header location="global">gui/advsearch/guiexprelement.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ExprTermsElement</class>
+   <extends>QFrame</extends>
+   <header location="global">gui/advsearch/guiexprelement.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ExprConditionElement</class>
+   <extends>QFrame</extends>
+   <header location="global">gui/advsearch/guiexprelement.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ExprParamElement</class>
+   <extends>QFrame</extends>
+   <header location="global">gui/advsearch/guiexprelement.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

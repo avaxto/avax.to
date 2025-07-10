@@ -1,0 +1,46 @@
+@use '../abstracts' as *;
+
+.friend {
+  color: #444;
+  font-size: 1.2em;
+  margin: 1rem 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  & i {
+    float: left;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  & h4 {
+    margin-bottom: 5px;
+  }
+  & button {
+    font-size: 0.9em;
+  }
+  &.hidden {
+    display: none;
+  }
+  & .brief-info.online {
+    color: green;
+  }
+
+  & .location {
+    margin: 5px;
+    border-top: 1px solid #bbb;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+  }
+  & .brief-info {
+    @include flex($align: center);
+    justify-self: start;
+  }
+
+  & .fa-times-circle {
+    color: #555;
+  }
+  & .fa-check-circle {
+    color: green;
+  }
+}

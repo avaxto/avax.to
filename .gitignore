@@ -1,14 +1,39 @@
-CMakeLists.txt.user
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake
-_deps
-CMakeUserPresets.json
+# SPDX-FileCopyrightText: (C) 2004-2022 Retroshare Team <contact@retroshare.cc>
+# SPDX-License-Identifier: CC0-1.0
+
+*.o
+*.sw?
+*.so
+*.so.*
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+*.sw?
+*~
+Thumbs.db
+*.pro.user
+.kdev4
+*.kdev4
 build
 .vscode
+
+.qmake.stash
+
+!supportlibs/libsam3/Makefile
+
+# QtCreator cruft
+*CMakeLists.txt.user*
+
+# Build artifacts
+/jsonapi-generator/src/jsonapi-generator
+/jsonapi-generator/src/jsonapi-generator-doxygen-final.conf
+/jsonapi-generator/src/jsonapi-includes.inl
+/jsonapi-generator/src/jsonapi-wrappers.inl
+/jsonapi-generator/src/xml/
+/retroshare-friendserver/src/retroshare-friendserver
+/retroshare-gui/src/include/
+/retroshare-gui/src/retroshare
+/retroshare-gui/src/temp/
+/retroshare-service/src/retroshare-service
+/*.tar.?z

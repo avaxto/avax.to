@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: RetroShare
+Upstream-Contact: RetroShare Team <contact@retroshare.cc>
+
+Files: *
+Copyright: 2004-2022, Retroshare Team <contact@retroshare.cc>
+License: LGPL-3.0-or-later

@@ -1,0 +1,114 @@
+#
+# Copyright 2021-2024 Ribose Inc. (https://www.ribose.com)
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+
+name: build-and-test-deb
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }}-${{ github.job }}-${{ github.head_ref || github.ref_name }}'
+  cancel-in-progress: true
+
+env:
+# Looks like the last version that supports i386
+  CMAKE_VERSION: '3.20.6-2'
+  MAKEFLAGS: j4
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.image }}-${{ matrix.env.CC }} shared lib ${{ matrix.shared }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [ 'i386/debian:12', 'amd64/debian:12', 'i386/debian:11', 'amd64/debian:11' ]
+        env: [ {CC: gcc, CXX: g++}, {CC: clang, CXX: clang++} ]
+        shared: [on, off]
+
+    container: ${{ matrix.image }}
+    env: ${{ matrix.env }}
+    steps:
+      - name: Install packages
+        run: |
+          apt-get update
+          apt-get -y install sudo git wget build-essential libssl-dev software-properties-common
+
+      - name: Checkout
+        # Because i386 support v1 only (no node run-time)
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Install cmake/i386
+        if: startsWith(matrix.image, 'i386')
+        run: |
+          wget -nv https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v${{ env.CMAKE_VERSION }}/xpack-cmake-${{ env.CMAKE_VERSION }}-linux-ia32.tar.gz
+          tar -zxf xpack-cmake-${{ env.CMAKE_VERSION }}-linux-ia32.tar.gz --directory /usr/local --strip-components=1 --skip-old-files
+
+      - name: Install cmake/amd64
+        if: startsWith(matrix.image, 'amd64')
+        run: |
+          wget -nv https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v${{ env.CMAKE_VERSION }}/xpack-cmake-${{ env.CMAKE_VERSION }}-linux-x64.tar.gz
+          tar -zxf xpack-cmake-${{ env.CMAKE_VERSION }}-linux-x64.tar.gz --directory /usr/local --strip-components=1 --skip-old-files
+
+      - name: Install clang
+        if: matrix.env.CC == 'clang'
+        run: |
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
+          apt-add-repository "deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch main"
+          apt-get install -y clang
+
+      - name: Adjust environment
+        run: |
+          echo "SEXP_INSTALL_PATH=$PWD/install" >> $GITHUB_ENV
+          echo "SHARED_LIB=${{ matrix.shared }}" >> $GITHUB_ENV
+
+      - name: Configure
+        run: cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=${{ env.SEXP_INSTALL_PATH }} -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=${{ matrix.shared }}
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Checkout shell test framework/amd64 only
+        # i386 supports actions/checkout@v1 only (no Node.js 32-bit binary)
+        # and and actions/checkout@v1 has some issues with nested repositories
+        if: startsWith(matrix.image, 'amd64')
+        uses: actions/checkout@v4
+        with:
+          repository: kward/shunit2
+          path: ${{github.workspace}}/tests/shunit2
+          fetch-depth: 1
+
+      - name: Install
+        run: cmake --install build
+
+      - name: Run additional tests
+        # See above, just assume that in i386 config it was installed correctly
+        if: startsWith(matrix.image, 'amd64')
+        shell: bash
+        run: tests/scripts/tests.sh

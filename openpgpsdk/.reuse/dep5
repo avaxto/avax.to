@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: RetroShare
+Upstream-Contact: RetroShare Team <contact@retroshare.cc>
+
+Files: *
+Copyright: 2005-2008, Ben Laurie
+           2005-2008, Rachel Willmer
+           2008-2022, Retroshare Team <contact@retroshare.cc>
+License: Apache-2.0

@@ -1,0 +1,171 @@
+/******************************
+General site-wide rules
+******************************/
+@use '../abstracts' as *;
+
+#main {
+  height: 100vh;
+}
+
+/* Main base div for tabs used by m.route */
+.content {
+  @include flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Main tab content */
+.tab-content {
+  @include flex;
+  height: 100%;
+  width: 100%;
+  background-color: $light-color;
+  animation: fadein 0.3s;
+  overflow: auto;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='number'],
+textarea {
+  box-sizing: border-box;
+  background: white;
+  max-width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  /* Disable chromium's focused element hinting*/
+  outline: transparent;
+}
+input {
+  &:focus {
+    border: 1px solid #3ba4d7;
+    box-shadow: inset 0 0 5px #ccc;
+  }
+  &.stretched {
+    width: 90%;
+  }
+  &.small {
+    max-width: 70%;
+    padding: 0.1rem;
+  }
+  &.searchbar {
+    width: 40%;
+  }
+}
+
+a {
+  cursor: pointer;
+  &[title='Back'] {
+    width: max-content;
+    height: max-content;
+    padding: 0.475rem 0.75rem;
+    border-radius: 50%;
+    transition: 100ms;
+    &:hover {
+      background: $light-color;
+    }
+  }
+}
+
+table {
+  padding: 20px;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  color: #333;
+  font-size: 1.125rem;
+  & th {
+    font-size: 1.125rem;
+    color: black;
+    border-bottom: 2px solid #eee;
+  }
+  & tr {
+    border-bottom: 1px solid #eee;
+  }
+}
+
+h3 {
+  color: #444;
+}
+hr {
+  margin-left: 0;
+  color: #aaa;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  justify-content: start;
+  & input[type='checkbox'] {
+    margin-top: 20px;
+  }
+}
+
+.error {
+  color: red;
+}
+
+.tooltip {
+  color: #333;
+  position: relative;
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+.tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  min-width: 250px;
+  margin-left: -120px;
+  z-index: 1;
+  color: #ccc;
+  background-color: #333;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  animation: fadein 0.5s;
+}
+
+blockquote {
+  color: $dark-color;
+  padding: 0.75rem 1rem 0.75rem 2rem;
+  border-radius: 0.25rem;
+  &.info {
+    @include blockquote('info');
+  }
+}
+
+/******************************
+Animations
+******************************/
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadein {
+  animation: fadein 0.5s;
+}
+
+@keyframes swipe-from-left {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin-left: 0;
+  }
+}

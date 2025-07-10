@@ -1,0 +1,62 @@
+/*******************************************************************************
+ * gui/common/RSTreeView.h                                                     *
+ *                                                                             *
+ * Copyright (C) 2010 RetroShare Team <retroshare.project@gmail.com>           *
+ *                                                                             *
+ * This program is free software: you can redistribute it and/or modify        *
+ * it under the terms of the GNU Affero General Public License as              *
+ * published by the Free Software Foundation, either version 3 of the          *
+ * License, or (at your option) any later version.                             *
+ *                                                                             *
+ * This program is distributed in the hope that it will be useful,             *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of              *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the                *
+ * GNU Affero General Public License for more details.                         *
+ *                                                                             *
+ * You should have received a copy of the GNU Affero General Public License    *
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.       *
+ *                                                                             *
+ *******************************************************************************/
+
+#ifndef _RSTREEVIEW_H
+#define _RSTREEVIEW_H
+
+#include <QTreeView>
+
+/* Subclassing QTreeView */
+class RSTreeView : public QTreeView
+{
+	Q_OBJECT
+
+public:
+	RSTreeView(QWidget *parent = nullptr);
+
+	/**
+	 * @brief set Placeholder Text
+	 * @param text
+	 */
+	void setPlaceholderText(const QString &text);
+
+	/**
+	 * @brief Use this to make selection automatic based on mouse position.
+	 * This is useful to trigger selection and therefore editing mode in trees that show editing widgets using a QStyledItemDelegate.
+	 * @param b
+	 */
+	void setAutoSelect(bool b);
+
+signals:
+	void sizeChanged(QSize);
+	void zoomRequested(bool zoom_or_unzoom);
+
+protected:
+	virtual void mouseMoveEvent(QMouseEvent *e) override; // overriding so as to manage auto-selection
+	virtual void leaveEvent(QEvent *e) override; // overriding so as to manage auto-selection clear
+	virtual void wheelEvent(QWheelEvent *e) override; // overriding so as to manage zoom
+	virtual void resizeEvent(QResizeEvent *e) override;
+	virtual void paintEvent(QPaintEvent *event) override;
+
+	QString placeholderText;
+	bool autoSelect;
+};
+
+#endif

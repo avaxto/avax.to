@@ -1,0 +1,38 @@
+@use '../abstracts/' as *;
+
+.widget {
+  height: 100%;
+  padding: 1rem;
+  @include flex(column, $gap: 0.5rem);
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: auto;
+  & .top-heading {
+    @include flex($justify: space-between);
+  }
+  &__heading {
+    @include flex($justify: space-between, $align: center);
+    border-bottom: 2px solid #999;
+  }
+  &__body {
+    height: 100%;
+    @include flex(column);
+    overflow: auto;
+    &-heading {
+      @include flex($justify: space-between, $align: center);
+      & .action {
+        @include flex($gap: 0.5rem);
+      }
+    }
+    &-content {
+      height: 100%;
+      overflow: auto;
+    }
+    &-box {
+      @include flex(column, $gap: 0.5rem);
+    }
+  }
+  &-half {
+    max-width: 50%;
+  }
+}

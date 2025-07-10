@@ -1,0 +1,174 @@
+@use '../abstracts' as *;
+
+/* Navbar */
+.nav-menu {
+  background-color: $dark-color;
+  box-shadow: 0 5px 5px #222;
+  @include flex(column, $align: center);
+  height: 100%;
+  padding: 0.5rem 0.25rem;
+  margin-right: 0rem;
+
+  &__logo {
+    padding: 1.2rem 0;
+    @include flex($align: center, $gap: 0.3rem);
+
+    img {
+      width: 1.6rem;
+    }
+
+    h5 {
+      line-height: 1;
+      color: white;
+    }
+  }
+
+  &__box {
+    padding: 2rem 0.125rem;
+    @include flex(column, $gap: 0.5rem);
+    position: relative;
+
+    .item {
+      margin: 0;
+      padding: 0.675rem 0.5rem;
+      width: 10rem;
+      @include flex($align: center);
+      line-height: 1;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: #ccc;
+      text-transform: capitalize;
+      transition: 0ms;
+
+      &:hover {
+        background-color: transparentize($light-color, 0.85);
+      }
+
+      i.sidenav-icon {
+        width: 2.5rem;
+        height: 1.4rem;
+        display: grid;
+        place-items: center;
+      }
+    }
+
+    .item.item-selected {
+      color: $primary-light-color;
+      background-color: transparentize($primary-light-color, 0.85);
+      font-weight: medium;
+    }
+
+    button.toggle-nav {
+      display: none;
+      position: absolute;
+      padding: 0;
+      top: 0;
+      right: -1rem;
+      background: lighten($primary-color, 15%);
+      width: 1.5rem;
+      height: 1.5rem;
+      aspect-ratio: 1;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      box-shadow: none;
+    }
+  }
+
+  &.collapsed {
+    .nav-menu__logo {
+      & h5 {
+        display: none;
+      }
+    }
+
+    .nav-menu__box {
+      .item {
+        padding: 0.675rem 0;
+        width: 2.5rem;
+        justify-content: center;
+        transition: 300ms;
+
+        & p {
+          display: none;
+        }
+      }
+    }
+
+    button i {
+      rotate: 180deg;
+    }
+  }
+
+  // only show toggle button when sidebar is hovered
+  &:hover button.toggle-nav {
+    display: flex;
+  }
+}
+
+.sidebar {
+  width: 13rem;
+  background-color: white;
+  @include flex(column);
+
+  & a {
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 1rem;
+    cursor: pointer;
+    color: #999;
+
+    &:hover {
+      color: #222;
+    }
+  }
+
+  & .selected-sidebar-link {
+    font-weight: bold;
+    color: #222;
+    border-left: 5px solid #3ba4d7;
+    animation: expand-left-border 0.1s;
+  }
+}
+
+.sidebarquickview {
+  & > h6 {
+    padding: 0.5rem;
+  }
+
+  & a {
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 0.5rem 1rem;
+    display: block;
+    color: #999;
+
+    & a:hover {
+      color: #222;
+    }
+  }
+
+  & .selected-sidebarquickview-link {
+    font-weight: bold;
+    color: #222;
+    border-left: 5px solid #3ba4d7;
+    animation: expand-left-border 0.1s;
+  }
+}
+
+/* Content adjacent to sidebar */
+.node-panel {
+  width: 100%;
+  padding: 0.5rem;
+  animation: fadein 0.5s;
+}
+
+@keyframes expand-left-border {
+  from {
+    border-left: 0;
+  }
+
+  to {
+    border-left: 5px solid #3ba4d7;
+  }
+}

@@ -1,0 +1,91 @@
+@use '../abstracts' as *;
+
+.mail {
+  .permission-flag {
+    margin-bottom: 1rem;
+    @include flex($gap: 1rem);
+  }
+  &-tags {
+    padding: 0.5rem;
+    border: 1px solid transparentize($dark-color, 0.8);
+    border-radius: 6px;
+    &__container {
+      @include flex(column);
+      & .tag-item {
+        @include flex($align: center, $gap: 4px);
+        border-bottom: 1px solid transparentize($dark-color, 0.9);
+        padding: 2px 0;
+
+        &:last-child {
+          border: none;
+        }
+        &__color {
+          width: 1.25rem;
+          height: 1.25rem;
+          aspect-ratio: 1;
+        }
+        &__name {
+          font-size: 1.125rem;
+        }
+        &__modify {
+          margin-left: auto;
+          font-size: 0.75rem;
+          @include flex($gap: 4px);
+        }
+        &:hover {
+          background-color: $light-color;
+        }
+        & button,
+        & button.red {
+          padding: 0.25rem 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+.mail-tags-form .input-field {
+  margin-bottom: 0.5rem;
+  label {
+    margin-right: 0.5rem;
+  }
+}
+
+.external-address {
+  margin: 0;
+  padding-left: 1rem;
+  height: 100px;
+  overflow: hidden auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.proxy-server {
+  @include flex(column, $gap: 4px);
+  &__tor,
+  &__i2p {
+    & > h4 {
+      margin-bottom: 0.25rem;
+    }
+    & > input {
+      margin-right: 0.5rem;
+    }
+    .proxy-outgoing {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      &__status {
+        width: 1rem;
+        height: 1rem;
+        aspect-ratio: 1;
+        border: 1px solid black;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.config-files {
+  @include flex(column, $gap: 1rem);
+}

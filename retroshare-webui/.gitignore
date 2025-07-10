@@ -1,0 +1,6 @@
+.qmake.stash
+Makefile
+webui/*
+webui.pro.user
+libwebui.so*
+node_modules/

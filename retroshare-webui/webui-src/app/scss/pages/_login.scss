@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+.login-page {
+  background-image: linear-gradient(
+    -45deg,
+    transparentize($primary-color, 0.25),
+    transparentize($primary-retro-color, 0.25)
+  );
+  height: 100%;
+  animation: fadein 0.5s;
+  .login-container {
+    background-color: white;
+    box-shadow: 3px 3px 5px transparentize($dark-color, 0.6);
+    margin: auto;
+    position: relative;
+    top: 100px;
+    max-width: 400px;
+    max-height: 500px;
+    border-radius: 5px;
+    @include flex(column, $align: center);
+
+    & input {
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.275rem;
+    }
+
+    & * {
+      margin-bottom: 1rem;
+    }
+    & > img {
+      margin: 1rem 0 2rem;
+    }
+    & extra {
+      margin: 0;
+    }
+    & > a {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .extra > label,
+  .extra > br,
+  .extra > input {
+    margin-bottom: 0;
+  }
+}
