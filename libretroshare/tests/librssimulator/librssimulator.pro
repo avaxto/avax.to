@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.       #
 ################################################################################
 
-!include("../../retroshare.pri"): error("Could not include file ../../retroshare.pri")
+!include("../../avaxto.pri"): error("Could not include file ../../avaxto.pri")
 
 TEMPLATE = lib
 CONFIG += staticlib 

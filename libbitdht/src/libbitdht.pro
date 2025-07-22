@@ -18,7 +18,7 @@
 # SPDX-FileCopyrightText: Retroshare Team <contact@retroshare.cc>
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
-!include("../../retroshare.pri"): error("Could not include file ../../retroshare.pri")
+!include("../../avaxto.pri"): error("Could not include file ../../avaxto.pri")
 
 TEMPLATE = lib
 CONFIG += staticlib

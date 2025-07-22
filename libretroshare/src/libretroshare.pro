@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: (C) 2004-2024 Retroshare Team <contact@retroshare.cc>
 # SPDX-License-Identifier: CC0-1.0
 
-!include("../../retroshare.pri"): error("Could not include file ../../retroshare.pri")
+!include("../../avaxto.pri"): error("Could not include file ../../avaxto.pri")
 
 message("CONFIG = "$$CONFIG)
 

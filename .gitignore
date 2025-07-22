@@ -5,6 +5,7 @@
 *.sw?
 *.so
 *.so.*
+*.a
 moc_*.cpp
 qrc_*.cpp
 ui_*.h
@@ -17,15 +18,14 @@ Thumbs.db
 *.kdev4
 build
 .vscode
-
+.qmake2cmake
 .qmake.stash
-
+Makefile.libbitdht
+CMakeLists.gen.txt
 !supportlibs/libsam3/Makefile
 
-# QtCreator cruft
 *CMakeLists.txt.user*
 
-# Build artifacts
 /jsonapi-generator/src/jsonapi-generator
 /jsonapi-generator/src/jsonapi-generator-doxygen-final.conf
 /jsonapi-generator/src/jsonapi-includes.inl

@@ -18,7 +18,7 @@
 # SPDX-FileCopyrightText: Retroshare Team <contact@retroshare.cc>
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-!include("../../retroshare.pri"): error("Could not include file ../../retroshare.pri")
+!include("../../avaxto.pri"): error("Could not include file ../../avaxto.pri")
 
 TARGET = retroshare-friendserver
 

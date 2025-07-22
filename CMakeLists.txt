@@ -47,5 +47,7 @@ if(MACOSX)
 endif()
 
 add_subdirectory(src)
+add_subdirectory(retroshare-gui)
+
 
 

@@ -21,7 +21,7 @@
 
 CONFIG += c++14
 
-!include("retroshare.pri"): error("Could not include file retroshare.pri")
+!include("avaxto.pri"): error("Could not include file avaxto.pri")
 
 TEMPLATE = subdirs
 

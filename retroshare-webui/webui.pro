@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.       #
 ################################################################################
 
-!include("../retroshare.pri"): warning("Could not include file retroshare.pri")
+!include("../avaxto.pri"): warning("Could not include file avaxto.pri")
 
 TEMPLATE = subdirs
 SUBDIRS= # don't build anything
